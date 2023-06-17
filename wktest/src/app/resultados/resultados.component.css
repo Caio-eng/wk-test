@@ -1,0 +1,27 @@
+.container {
+  width: 25rem;
+  margin: auto;
+  padding: 1rem;
+  border-radius: .6rem;
+}
+
+button {
+  margin-top: .5rem;
+  border-radius: .6rem;
+  align-items: center;
+  align-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.full-width {
+  width: 100%;
+}
