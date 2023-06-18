@@ -9,12 +9,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	 @Override
-	    protected void configure(HttpSecurity http) throws Exception {
-	        http.
-	            csrf().disable()
-	            .cors()
-	        .and()
-	            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-	    }
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable().cors().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+	}
 }

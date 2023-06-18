@@ -15,23 +15,23 @@ import org.springframework.web.filter.CorsFilter;
 public class WebConfig {
 
 	@Bean
-    public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean(){
-        List<String> all = Arrays.asList("*");
+	public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean() {
+		List<String> all = Arrays.asList("*");
 
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOriginPatterns(all);
-        corsConfiguration.setAllowedHeaders(all);
-        corsConfiguration.setAllowedMethods(all);
-        corsConfiguration.setAllowCredentials(true);
+		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		corsConfiguration.setAllowedOriginPatterns(all);
+		corsConfiguration.setAllowedHeaders(all);
+		corsConfiguration.setAllowedMethods(all);
+		corsConfiguration.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfiguration);
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", corsConfiguration);
 
-        CorsFilter corsFilter = new CorsFilter(source);
-        FilterRegistrationBean<CorsFilter> filter = new FilterRegistrationBean<>(corsFilter);
-        filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		CorsFilter corsFilter = new CorsFilter(source);
+		FilterRegistrationBean<CorsFilter> filter = new FilterRegistrationBean<>(corsFilter);
+		filter.setOrder(Ordered.HIGHEST_PRECEDENCE);
 
-        return filter;
-    }
-	
+		return filter;
+	}
+
 }

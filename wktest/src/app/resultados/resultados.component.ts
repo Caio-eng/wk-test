@@ -10,17 +10,17 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 
 export class ResultadosComponent implements OnInit {
+
   formulario?: FormGroup;
   mostrarResultado: boolean = false;
   resultado?: Resultado;
+  erro: any;
+
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
   dataImc: MatTableDataSource<any> = new MatTableDataSource<any>();
   dataObesos: MatTableDataSource<any> = new MatTableDataSource<any>();
   dataTipoSangue: MatTableDataSource<any> = new MatTableDataSource<any>();
   dataQuantidadeDoadores: MatTableDataSource<any> = new MatTableDataSource<any>();
-
-  erro: any;
-
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 

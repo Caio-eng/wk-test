@@ -24,33 +24,32 @@ public class DoadorController {
 
 	@PostMapping("/processar")
 	public ResponseEntity<Map<String, List<Object>>> processarDadosCandidatos(@RequestBody List<Doador> doadores) {
-	    Map<String, List<Object>> resultadoFinal = new HashMap<>();
+		Map<String, List<Object>> resultadoFinal = new HashMap<>();
 
-	    List<Object> contagemEstados = doadorService.contarCandidatosPorEstado(doadores);
-	    resultadoFinal.put("contagemEstados", contagemEstados);
+		List<Object> contagemEstados = doadorService.contarCandidatosPorEstado(doadores);
+		resultadoFinal.put("contagemEstados", contagemEstados);
 
-	    List<Object> imcMedioPorFaixaIdade = doadorService.calcularIMCMedioPorFaixaIdade(doadores);
-	    resultadoFinal.put("imcMedioPorFaixaIdade", imcMedioPorFaixaIdade);
+		List<Object> imcMedioPorFaixaIdade = doadorService.calcularIMCMedioPorFaixaIdade(doadores);
+		resultadoFinal.put("imcMedioPorFaixaIdade", imcMedioPorFaixaIdade);
 
-	    double percentualObesosHomens = doadorService.calcularPercentualObesosPorGenero(doadores, "masculino");
-	    double percentualObesosMulheres = doadorService.calcularPercentualObesosPorGenero(doadores, "feminino");
+		double percentualObesosHomens = doadorService.calcularPercentualObesosPorGenero(doadores, "masculino");
+		double percentualObesosMulheres = doadorService.calcularPercentualObesosPorGenero(doadores, "feminino");
 
-	    Map<String, Double> percentualObesos = new HashMap<>();
-	    percentualObesos.put("homens", percentualObesosHomens);
-	    percentualObesos.put("mulheres", percentualObesosMulheres);
-	    List<Object> percentualObesosList = new ArrayList<>();
-	    percentualObesosList.add(percentualObesos);
-	    resultadoFinal.put("percentualObesos", percentualObesosList);
+		Map<String, Double> percentualObesos = new HashMap<>();
+		percentualObesos.put("homens", percentualObesosHomens);
+		percentualObesos.put("mulheres", percentualObesosMulheres);
+		List<Object> percentualObesosList = new ArrayList<>();
+		percentualObesosList.add(percentualObesos);
+		resultadoFinal.put("percentualObesos", percentualObesosList);
 
-	    List<Object> mediaIdadePorTipoSanguineo = doadorService.calcularMediaIdadePorTipoSanguineo(doadores);
-	    resultadoFinal.put("mediaIdadePorTipoSanguineo", mediaIdadePorTipoSanguineo);
+		List<Object> mediaIdadePorTipoSanguineo = doadorService.calcularMediaIdadePorTipoSanguineo(doadores);
+		resultadoFinal.put("mediaIdadePorTipoSanguineo", mediaIdadePorTipoSanguineo);
 
-	    List<Object> quantidadeDoadoresPorTipoSanguineo = doadorService.calcularQuantidadeDoadoresPorTipoSanguineoReceptor(doadores);
-	    resultadoFinal.put("quantidadeDoadoresPorTipoSanguineo", quantidadeDoadoresPorTipoSanguineo);
+		List<Object> quantidadeDoadoresPorTipoSanguineo = doadorService
+				.calcularQuantidadeDoadoresPorTipoSanguineoReceptor(doadores);
+		resultadoFinal.put("quantidadeDoadoresPorTipoSanguineo", quantidadeDoadoresPorTipoSanguineo);
 
-	    return ResponseEntity.ok(resultadoFinal);
+		return ResponseEntity.ok(resultadoFinal);
 	}
 
 }
-
-

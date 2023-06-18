@@ -5,42 +5,19 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Email;
-
-import org.hibernate.validator.constraints.br.CPF;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
 public class Doador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
-	@Column(length = 100)
 	private String nome;
-
-	@CPF(message = "CPF é inválido")
 	private String cpf;
-
 	private String rg;
-
 	private String data_nasc;
-
 	private String sexo;
 	private String nomeMae;
 	private String nomePai;
-
-	@Email(message = "Email é inválido")
-	@Column(unique = true)
 	private String email;
 	private String cep;
 	private String endereco;
@@ -54,9 +31,7 @@ public class Doador implements Serializable {
 	private float peso;
 	private String tipoSanguineo;
 
-	public Doador() {
-		super();
-	}
+	public Doador() {}
 
 	public Doador(String nome, String cpf, String rg, String data_nasc, String sexo, String nomeMae, String nomePai,
 			String email, String cep, String endereco, String numero, String bairro, String cidade, String estado,

@@ -1,6 +1,5 @@
 package com.tecnico.test.services;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +11,7 @@ import com.tecnico.test.domain.Doador;
 import com.tecnico.test.domain.MediaIdadePorTipoSanguineo;
 
 @Service
-public class DoadorService implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class DoadorService {
 
 	public List<Object> contarCandidatosPorEstado(List<Doador> doadores) {
 	    Map<String, Integer> contagemEstados = new HashMap<>();

@@ -1,133 +1,149 @@
 <div class="container">
   <h2>Validação e Processamento de JSON</h2>
 
-  <form *ngIf="formulario" [formGroup]="formulario" class="form">
-    <textarea
-      matInput
-      formControlName="jsonData"
-      rows="10"
-      cols="50"
-      placeholder="Insira o JSON aqui"
-    ></textarea>
-    <br />
-    <button
-      (click)="processarJSON()"
-      class="fullWidth mat-elevation-z4"
-      mat-flat-button
-      color="primary"
-    >
-      Processar
-    </button>
-  </form>
+  <div class="form-container">
+    <form *ngIf="formulario" [formGroup]="formulario" class="form">
+      <textarea
+        matInput
+        formControlName="jsonData"
+        rows="10"
+        cols="50"
+        placeholder="Insira o JSON aqui"
+      ></textarea>
+      <br />
+      <button
+        (click)="processarJSON()"
+        class="fullWidth mat-elevation-z4"
+        mat-flat-button
+        color="primary"
+      >
+        Processar
+      </button>
+    </form>
+  </div>
 
-  <div class="container" *ngIf="mostrarResultado">
-    <h2>Contagem de Estados</h2>
+  <div class="table-container" *ngIf="mostrarResultado">
 
-    <mat-table class="table mat-elevation-z8" [dataSource]="dataSource">
-      <ng-container matColumnDef="estado">
-        <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
-        <mat-cell *matCellDef="let estado">{{ estado.estado }}</mat-cell>
-      </ng-container>
+    <div class="table-wrapper">
+      <h2>Contagem de Estados</h2>
 
-      <ng-container matColumnDef="quantidade">
-        <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
-        <mat-cell *matCellDef="let estado">{{ estado.quantidade }}</mat-cell>
-      </ng-container>
+      <mat-table style="max-height: 400px; overflow-y: auto;" class="table mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="estado">
+          <mat-header-cell *matHeaderCellDef>Estado</mat-header-cell>
+          <mat-cell *matCellDef="let estado">{{ estado.estado }}</mat-cell>
+        </ng-container>
 
-      <mat-header-row
-        *matHeaderRowDef="['estado', 'quantidade']"
-      ></mat-header-row>
-      <mat-row
-        *matRowDef="let estado; columns: ['estado', 'quantidade']"
-      ></mat-row>
-    </mat-table>
+        <ng-container matColumnDef="quantidade">
+          <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
+          <mat-cell *matCellDef="let estado">{{ estado.quantidade }}</mat-cell>
+        </ng-container>
 
-    <h2>IMC Médio por Idade</h2>
+        <mat-header-row
+          *matHeaderRowDef="['estado', 'quantidade']"
+        ></mat-header-row>
+        <mat-row
+          *matRowDef="let estado; columns: ['estado', 'quantidade']"
+        ></mat-row>
+      </mat-table>
+    </div>
 
-    <mat-table class="table mat-elevation-z8" [dataSource]="dataImc">
-      <ng-container matColumnDef="faixaIdade">
-        <mat-header-cell *matHeaderCellDef>Faixa de Idade</mat-header-cell>
-        <mat-cell *matCellDef="let imc">{{ imc.faixaIdade }}</mat-cell>
-      </ng-container>
+    <div class="table-wrapper">
+      <h2>IMC Médio por Idade</h2>
 
-      <ng-container matColumnDef="imcMedio">
-        <mat-header-cell *matHeaderCellDef>IMC Médio</mat-header-cell>
-        <mat-cell *matCellDef="let imc">{{ imc.imcMedio }}</mat-cell>
-      </ng-container>
+      <mat-table class="table mat-elevation-z8" [dataSource]="dataImc">
+        <ng-container matColumnDef="faixaIdade">
+          <mat-header-cell *matHeaderCellDef>Faixa de Idade</mat-header-cell>
+          <mat-cell *matCellDef="let imc">{{ imc.faixaIdade }}</mat-cell>
+        </ng-container>
 
-      <mat-header-row
-        *matHeaderRowDef="['faixaIdade', 'imcMedio']"
-      ></mat-header-row>
-      <mat-row
-        *matRowDef="let faixaIdade; columns: ['faixaIdade', 'imcMedio']"
-      ></mat-row>
-    </mat-table>
+        <ng-container matColumnDef="imcMedio">
+          <mat-header-cell *matHeaderCellDef>IMC Médio</mat-header-cell>
+          <mat-cell *matCellDef="let imc">{{ imc.imcMedio }}</mat-cell>
+        </ng-container>
 
-    <h2>Percentual de Obesos entre Homens e Mulheres</h2>
-    <mat-table class="table mat-elevation-z8" [dataSource]="dataObesos">
-      <ng-container matColumnDef="homens">
-        <mat-header-cell *matHeaderCellDef>Homens</mat-header-cell>
-        <mat-cell *matCellDef="let percentual">{{
-          percentual.homens
-        }}</mat-cell>
-      </ng-container>
+        <mat-header-row
+          *matHeaderRowDef="['faixaIdade', 'imcMedio']"
+        ></mat-header-row>
+        <mat-row
+          *matRowDef="let faixaIdade; columns: ['faixaIdade', 'imcMedio']"
+        ></mat-row>
+      </mat-table>
+    </div>
+  </div>
 
-      <ng-container matColumnDef="mulheres">
-        <mat-header-cell *matHeaderCellDef>Mulheres</mat-header-cell>
-        <mat-cell *matCellDef="let percentual">{{
-          percentual.mulheres
-        }}</mat-cell>
-      </ng-container>
+  <div class="table-container" *ngIf="mostrarResultado">
 
-      <mat-header-row
-        *matHeaderRowDef="['mulheres', 'homens']"
-      ></mat-header-row>
-      <mat-row
-        *matRowDef="let percentual; columns: ['mulheres', 'homens']"
-      ></mat-row>
-    </mat-table>
+    <div class="table-wrapper small-table-wrapper">
+      <h2>Percentual de Obesos entre Homens e Mulheres</h2>
+      <mat-table class="table mat-elevation-z8" [dataSource]="dataObesos">
+        <ng-container matColumnDef="homens">
+          <mat-header-cell *matHeaderCellDef>Homens</mat-header-cell>
+          <mat-cell *matCellDef="let percentual">{{
+            percentual.homens
+          }}</mat-cell>
+        </ng-container>
 
-    <h2>Média de Idade pelo Tipo Sanguíneo</h2>
-    <mat-table class="table mat-elevation-z8" [dataSource]="dataTipoSangue">
-      <ng-container matColumnDef="tipoSanguineo">
-        <mat-header-cell *matHeaderCellDef>Tipo Sanguíneo</mat-header-cell>
-        <mat-cell *matCellDef="let tipo">{{ tipo.tipoSanguineo }}</mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="mulheres">
+          <mat-header-cell *matHeaderCellDef>Mulheres</mat-header-cell>
+          <mat-cell *matCellDef="let percentual">{{
+            percentual.mulheres
+          }}</mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="mediaIdade">
-        <mat-header-cell *matHeaderCellDef>Média de Idade</mat-header-cell>
-        <mat-cell *matCellDef="let tipo">{{ tipo.mediaIdade }}</mat-cell>
-      </ng-container>
+        <mat-header-row
+          *matHeaderRowDef="['mulheres', 'homens']"
+        ></mat-header-row>
+        <mat-row
+          *matRowDef="let percentual; columns: ['mulheres', 'homens']"
+        ></mat-row>
+      </mat-table>
+    </div>
 
-      <mat-header-row
-        *matHeaderRowDef="['tipoSanguineo', 'mediaIdade']"
-      ></mat-header-row>
-      <mat-row
-        *matRowDef="let tipo; columns: ['tipoSanguineo', 'mediaIdade']"
-      ></mat-row>
-    </mat-table>
+    <div class="table-wrapper">
+      <h2>Média de Idade pelo Tipo Sanguíneo</h2>
+      <mat-table class="table mat-elevation-z8" [dataSource]="dataTipoSangue">
+        <ng-container matColumnDef="tipoSanguineo">
+          <mat-header-cell *matHeaderCellDef>Tipo Sanguíneo</mat-header-cell>
+          <mat-cell *matCellDef="let tipo">{{ tipo.tipoSanguineo }}</mat-cell>
+        </ng-container>
 
-    <h2>Quantidade Possíveis de Doadores para cada Tipo Sanguíneo</h2>
-    <mat-table
-      class="table mat-elevation-z8"
-      [dataSource]="dataQuantidadeDoadores"
-    >
-      <ng-container matColumnDef="tipoSanguineo">
-        <mat-header-cell *matHeaderCellDef>Tipo Sanguíneo</mat-header-cell>
-        <mat-cell *matCellDef="let sang">{{ sang.tipoSanguineo }}</mat-cell>
-      </ng-container>
+        <ng-container matColumnDef="mediaIdade">
+          <mat-header-cell *matHeaderCellDef>Média de Idade</mat-header-cell>
+          <mat-cell *matCellDef="let tipo">{{ tipo.mediaIdade }}</mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="quantidade">
-        <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
-        <mat-cell *matCellDef="let sang">{{ sang.quantidade }}</mat-cell>
-      </ng-container>
+        <mat-header-row
+          *matHeaderRowDef="['tipoSanguineo', 'mediaIdade']"
+        ></mat-header-row>
+        <mat-row
+          *matRowDef="let tipo; columns: ['tipoSanguineo', 'mediaIdade']"
+        ></mat-row>
+      </mat-table>
+    </div>
 
-      <mat-header-row
-        *matHeaderRowDef="['tipoSanguineo', 'quantidade']"
-      ></mat-header-row>
-      <mat-row
-        *matRowDef="let sang; columns: ['tipoSanguineo', 'quantidade']"
-      ></mat-row>
-    </mat-table>
+    <div class="table-wrapper">
+      <h2>Quantidade Possíveis de Doadores para cada Tipo Sanguíneo</h2>
+      <mat-table
+        class="table mat-elevation-z8"
+        [dataSource]="dataQuantidadeDoadores"
+      >
+        <ng-container matColumnDef="tipoSanguineo">
+          <mat-header-cell *matHeaderCellDef>Tipo Sanguíneo</mat-header-cell>
+          <mat-cell *matCellDef="let sang">{{ sang.tipoSanguineo }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantidade">
+          <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
+          <mat-cell *matCellDef="let sang">{{ sang.quantidade }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row
+          *matHeaderRowDef="['tipoSanguineo', 'quantidade']"
+        ></mat-header-row>
+        <mat-row
+          *matRowDef="let sang; columns: ['tipoSanguineo', 'quantidade']"
+        ></mat-row>
+      </mat-table>
+    </div>
   </div>
 </div>

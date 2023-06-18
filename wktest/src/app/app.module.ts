@@ -23,7 +23,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CdkTableModule } from '@angular/cdk/table';
-
 import { NavComponent } from './nav/nav.component';
 
 @NgModule({

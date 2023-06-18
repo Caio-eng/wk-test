@@ -9,9 +9,7 @@ public class MediaIdadePorTipoSanguineo implements Serializable {
 	private String tipoSanguineo;
 	private double mediaIdade;
 
-	public MediaIdadePorTipoSanguineo() {
-		super();
-	}
+	public MediaIdadePorTipoSanguineo() {}
 
 	public MediaIdadePorTipoSanguineo(String tipoSanguineo, double mediaIdade) {
 		super();
