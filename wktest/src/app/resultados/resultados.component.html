@@ -1,5 +1,8 @@
 <div class="container">
-  <h2>Validação e Processamento de JSON</h2>
+
+  <div class="container-2">
+    <h1 class="mat-elevation-z4">WK-Test</h1>
+  </div>
 
   <div class="form-container">
     <form *ngIf="formulario" [formGroup]="formulario" class="form">
@@ -25,7 +28,7 @@
   <div class="table-container" *ngIf="mostrarResultado">
 
     <div class="table-wrapper">
-      <h2>Contagem de Estados</h2>
+      <h1 class="mat-elevation-z4">Contagem de Estados</h1>
 
       <mat-table style="max-height: 400px; overflow-y: auto;" class="table mat-elevation-z8" [dataSource]="dataSource">
         <ng-container matColumnDef="estado">
@@ -48,7 +51,7 @@
     </div>
 
     <div class="table-wrapper">
-      <h2>IMC Médio por Idade</h2>
+      <h1 class="mat-elevation-z4">IMC Médio por Idade</h1>
 
       <mat-table class="table mat-elevation-z8" [dataSource]="dataImc">
         <ng-container matColumnDef="faixaIdade">
@@ -58,7 +61,7 @@
 
         <ng-container matColumnDef="imcMedio">
           <mat-header-cell *matHeaderCellDef>IMC Médio</mat-header-cell>
-          <mat-cell *matCellDef="let imc">{{ imc.imcMedio }}</mat-cell>
+          <mat-cell *matCellDef="let imc">{{ imc.imcMedio | number: '1.2-2' }}</mat-cell>
         </ng-container>
 
         <mat-header-row
@@ -74,7 +77,7 @@
   <div class="table-container" *ngIf="mostrarResultado">
 
     <div class="table-wrapper small-table-wrapper">
-      <h2>Percentual de Obesos entre Homens e Mulheres</h2>
+      <h1 class="mat-elevation-z4">Percentual de Obesos entre Homens e Mulheres</h1>
       <mat-table class="table mat-elevation-z8" [dataSource]="dataObesos">
         <ng-container matColumnDef="homens">
           <mat-header-cell *matHeaderCellDef>Homens</mat-header-cell>
@@ -100,7 +103,7 @@
     </div>
 
     <div class="table-wrapper">
-      <h2>Média de Idade pelo Tipo Sanguíneo</h2>
+      <h1 class="mat-elevation-z4">Média de Idade pelo Tipo Sanguíneo</h1>
       <mat-table class="table mat-elevation-z8" [dataSource]="dataTipoSangue">
         <ng-container matColumnDef="tipoSanguineo">
           <mat-header-cell *matHeaderCellDef>Tipo Sanguíneo</mat-header-cell>
@@ -109,7 +112,7 @@
 
         <ng-container matColumnDef="mediaIdade">
           <mat-header-cell *matHeaderCellDef>Média de Idade</mat-header-cell>
-          <mat-cell *matCellDef="let tipo">{{ tipo.mediaIdade }}</mat-cell>
+          <mat-cell *matCellDef="let tipo">{{ tipo.mediaIdade | number: '1.2-2' }}</mat-cell>
         </ng-container>
 
         <mat-header-row
@@ -122,7 +125,7 @@
     </div>
 
     <div class="table-wrapper">
-      <h2>Quantidade Possíveis de Doadores para cada Tipo Sanguíneo</h2>
+      <h1 class="mat-elevation-z4">Quantidade de Doadores para cada Tipo Sanguíneo</h1>
       <mat-table
         class="table mat-elevation-z8"
         [dataSource]="dataQuantidadeDoadores"
